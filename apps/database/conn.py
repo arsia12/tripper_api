@@ -1,0 +1,25 @@
+from databases import Database
+from os import environ
+from dotenv.main import load_dotenv
+from sqlalchemy import create_engine, MetaData
+
+load_dotenv()
+
+DB_CONN_URL = '{}://{}:{}@{}:{}/{}'.format(
+    environ['DB_TYPE'],
+    environ['DB_USER'],
+    environ['DB_PASSWD'],
+    environ['DB_HOST'],
+    environ['DB_PORT'],
+    environ['DB_NAME'],
+)
+
+db_instance = Database(
+    DB_CONN_URL,
+    min_size=5,
+    max_size=100,
+    pool_recycle=500
+    )
+
+db_engine = create_engine(DB_CONN_URL)
+db_metadata = MetaData()
