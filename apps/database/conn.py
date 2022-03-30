@@ -8,7 +8,7 @@ load_dotenv()
 DB_CONN_URL = '{}://{}:{}@{}:{}/{}'.format(
     environ['DB_TYPE'],
     environ['DB_USER'],
-    environ['DB_PASSWD'],
+    environ['DB_PASSWORD'],
     environ['DB_HOST'],
     environ['DB_PORT'],
     environ['DB_NAME'],
